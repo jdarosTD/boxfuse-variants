@@ -1,3 +1,5 @@
+import com.ins.gradle.plugin.boxfuse.GreetingPluginExtension
+
 buildscript {
     dependencies {
         classpath 'com.ins.gradle.plugin:boxfuse-plugin:1.0-SNAPSHOT'
@@ -19,16 +21,21 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
-
-
 boxFuse {
 
-    variant {
-        name = "dev"
-        decimal = 0.5
-
+    ikarya {
+        env = "test"
+    }
+    amelia {
+        env = "prod"
     }
 }
+//greeting {
+//    message = "Hi"
+//    greeter {
+//        name = "Gradle"
+//    }
+//}
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
