@@ -1,0 +1,5 @@
+rootProject.name = 'boxfuse-test'
+
+// tag::include-build[]
+includeBuild '../boxfuse-plugin'
+// end::include-build[]
