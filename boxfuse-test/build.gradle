@@ -1,4 +1,4 @@
-import com.ins.gradle.plugin.boxfuse.GreetingPluginExtension
+import com.ins.gradle.plugin.boxfuse.PluginExtension
 
 buildscript {
     dependencies {
@@ -6,8 +6,10 @@ buildscript {
     }
 }
 
+
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.11'
+//    id 'org.jetbrains.kotlin.jvm' version '1.3.11'
+    id 'war'
 }
 apply plugin : 'com.ins.gradle.plugin.boxfuse'
 
@@ -19,27 +21,21 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+//    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
+
 boxFuse {
 
-    ikarya {
-        env = "test"
+    config {
+        user = boxfuseClientUser
+        secret = boxfuseClientSecret
+        payload = "nothing"
     }
-    amelia {
-        env = "prod"
+    variants {
+        ikarya {
+            payload = project.buildDir.path + "/libs/" + project.name + "-" + project.version + ".war"
+        }
+        amelia {
+        }
     }
-}
-//greeting {
-//    message = "Hi"
-//    greeter {
-//        name = "Gradle"
-//    }
-//}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
 }
