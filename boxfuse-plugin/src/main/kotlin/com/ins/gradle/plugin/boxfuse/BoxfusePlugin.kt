@@ -45,7 +45,7 @@ class BoxfusePlugin @Inject constructor(val instantiator: Instantiator) : Plugin
             ext.variants?.all{ variant ->
 
                 variant.config = BoxfuseExtension()
-                val envs = arrayOf("test","prod", "dev")
+                val envs = arrayOf("test","prod", "dev", "qualif")
                 for(env in envs){
                     project.tasks.create(
                         "boxFuse" +
